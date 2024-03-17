@@ -1,5 +1,4 @@
 ﻿Imports Npgsql
-Imports System.Data
 Module connectionToDatabase
     Private connString As String = "Host=localhost;Port=5432;Username=postgres;Password=password;Database=myDatabase"
 

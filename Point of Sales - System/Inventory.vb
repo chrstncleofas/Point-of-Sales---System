@@ -1,5 +1,4 @@
-﻿Imports Guna.UI2.WinForms.Suite
-Imports Npgsql
+﻿Imports Npgsql
 Public Class Inventory
     Sub txtclear()
         txtProductID.Text = ""

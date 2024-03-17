@@ -1,5 +1,4 @@
 ﻿Imports Npgsql
-Imports System.Data
 Public Class AccountCreation
     Sub txtclear()
         txtid.Text = ""

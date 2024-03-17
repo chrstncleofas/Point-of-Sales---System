@@ -4,9 +4,6 @@ Public Class LoginForm
     Public xpost As String
     Public xpriv As String
     Dim xtry As String
-    Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         If txtUsername.Text = "" And txtPassword.Text = "" Then
             MsgBox("Please type your username and password! ", vbCritical, "Error")
