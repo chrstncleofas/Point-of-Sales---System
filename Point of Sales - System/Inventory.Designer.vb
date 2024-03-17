@@ -22,8 +22,8 @@ Partial Class Inventory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.idPict = New System.Windows.Forms.PictureBox()
         Me.txtProductID = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -52,6 +52,7 @@ Partial Class Inventory
         Me.btnFirst = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.dgStock = New System.Windows.Forms.DataGridView()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
         CType(Me.idPict, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgStock, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -62,6 +63,7 @@ Partial Class Inventory
         Me.idPict.Location = New System.Drawing.Point(12, 12)
         Me.idPict.Name = "idPict"
         Me.idPict.Size = New System.Drawing.Size(171, 165)
+        Me.idPict.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.idPict.TabIndex = 0
         Me.idPict.TabStop = False
         '
@@ -302,8 +304,8 @@ Partial Class Inventory
         Me.dgStock.AllowUserToDeleteRows = False
         Me.dgStock.AllowUserToResizeColumns = False
         Me.dgStock.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.dgStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.dgStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgStock.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -311,10 +313,18 @@ Partial Class Inventory
         Me.dgStock.Location = New System.Drawing.Point(0, 260)
         Me.dgStock.Name = "dgStock"
         Me.dgStock.ReadOnly = True
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.dgStock.RowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.dgStock.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgStock.Size = New System.Drawing.Size(900, 245)
         Me.dgStock.TabIndex = 31
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(12, 229)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(155, 25)
+        Me.txtSearch.TabIndex = 32
         '
         'Inventory
         '
@@ -322,6 +332,7 @@ Partial Class Inventory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(900, 505)
+        Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.dgStock)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.btnDelete)
@@ -388,4 +399,5 @@ Partial Class Inventory
     Friend WithEvents btnFirst As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents dgStock As DataGridView
+    Friend WithEvents txtSearch As TextBox
 End Class

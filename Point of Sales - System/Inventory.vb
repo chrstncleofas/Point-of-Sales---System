@@ -153,4 +153,27 @@ Public Class Inventory
             End Try
         End If
     End Sub
+    Private Sub txtSearch_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSearch.KeyPress
+        Dim searchText As String = txtSearch.Text.Trim()
+        Try
+            Dim query As String = "SELECT * FROM tblstock WHERE ""Product ID"" LIKE '%" & searchText & "%' OR ""Product Category"" LIKE '%" & searchText & "%'"
+            tblstock = New NpgsqlDataAdapter(query, conn)
+            dbds = New DataSet()
+            tblstock.Fill(dbds, "tblstock")
+            If dbds.Tables("tblstock").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tblstock").Rows.Count) - 1
+                dgStock.DataSource = dbds.Tables("tblstock")
+                display()
+                idPict.ImageLocation = ""
+                idPict.Refresh()
+                idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
+                idPict.Load()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
 End Class
