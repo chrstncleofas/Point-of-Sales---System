@@ -9,11 +9,15 @@ Public Class Inventory
         txtDescription.Text = ""
     End Sub
     Private Sub Inventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        opendb2()
-        sqlquery2()
-        dgStock.DataSource = dbds.Tables("tblstock")
-        d1.Format = DateTimePickerFormat.Custom
-        d1.CustomFormat = "MM/dd/yyyy"
+        Try
+            opendb2()
+            sqlquery2()
+            dgStock.DataSource = dbds.Tables("tblstock")
+            d1.Format = DateTimePickerFormat.Custom
+            d1.CustomFormat = "MM/dd/yyyy"
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Sub Criticals()
         If txtProductQuan.Text <= "5" And txtProductQuan.Text >= "1" Then
@@ -36,41 +40,50 @@ Public Class Inventory
         End Try
     End Sub
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If txtProductID.Text = "" And txtProductName.Text = "" And txtCategory.Text = "" And txtDescription.Text = "" And txtProductQuan.Text And txtBuyingPrice.Text = "" And txtSellingPrice.Text = "" Then
-            MsgBox("Please fill up all field before click add button", vbCritical, "Invalid Add Item")
-        ElseIf MsgBox("The data are now successfuly save into database...", vbQuestion + vbYesNo, "Saving file into database...") = MsgBoxResult.Yes Then
-            OpenDatabase()
-            dbcmd = New NpgsqlCommand("INSERT INTO tblstock(""Product ID"", ""Product Name"", ""Product Category"", ""Product Description"", ""Product Quantity"", ""Buying Price"", ""Selling Price"", ""Date and Time"") VALUES ('" & txtProductID.Text.Trim & "','" & txtProductName.Text.Trim & "','" & txtCategory.Text.Trim & "','" & txtDescription.Text.Trim & "','" & txtProductQuan.Text & "','" & txtBuyingPrice.Text.Trim & "','" & txtSellingPrice.Text.Trim & "','" & d1.Value & "')", conn)
-            dbcmd.ExecuteNonQuery()
-            sqlquery2()
-            txtclear()
-            dgStock.DataSource = dbds.Tables("tblstock")
-        Else
-            MsgBox("Error", vbCritical, "Warning!!1!")
-        End If
+        Try
+            If txtProductID.Text = "" And txtProductName.Text = "" And txtCategory.Text = "" And txtDescription.Text = "" And txtProductQuan.Text And txtBuyingPrice.Text = "" And txtSellingPrice.Text = "" Then
+                MsgBox("Please fill up all field before click add button", vbCritical, "Invalid Add Item")
+            ElseIf MsgBox("The data are now successfuly save into database...", vbQuestion + vbYesNo, "Saving file into database...") = MsgBoxResult.Yes Then
+                OpenDatabase()
+                dbcmd = New NpgsqlCommand("INSERT INTO tblstock(""Product ID"", ""Product Name"", ""Product Category"", ""Product Description"", ""Product Quantity"", ""Buying Price"", ""Selling Price"", ""Date and Time"") VALUES ('" & txtProductID.Text.Trim & "','" & txtProductName.Text.Trim & "','" & txtCategory.Text.Trim & "','" & txtDescription.Text.Trim & "','" & txtProductQuan.Text & "','" & txtBuyingPrice.Text.Trim & "','" & txtSellingPrice.Text.Trim & "','" & d1.Value & "')", conn)
+                dbcmd.ExecuteNonQuery()
+                sqlquery2()
+                txtclear()
+                dgStock.DataSource = dbds.Tables("tblstock")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If txtProductID.Text = "" And txtProductQuan.Text And txtBuyingPrice.Text = "" And txtSellingPrice.Text = "" And txtDescription.Text = "" Then
-            MsgBox("Please select from stock page list of item that update", vbCritical, "Invalid Update")
-        ElseIf MsgBox("Do you want to save the changes you made to its database?", vbQuestion + vbYesNo, "Updating...") = MsgBoxResult.Yes Then
-            OpenDatabase()
-            dbcmd = New NpgsqlCommand("UPDATE tblstock SET ""Product ID""= '" & txtProductID.Text.Trim & "', ""Product Description""= '" & txtDescription.Text.Trim & "', ""Product Quantity""= '" & txtProductQuan.Text & "', ""Buying Price""= '" & txtBuyingPrice.Text.Trim & "', ""Selling Price""= '" & txtSellingPrice.Text.Trim & "' WHERE ""Product ID"" like '" & txtProductID.Text.Trim & "'", conn)
-            dbcmd.ExecuteNonQuery()
-            sqlquery2()
-            dgStock.DataSource = dbds.Tables("tblstock")
-            txtclear()
-        Else
-        End If
+        Try
+            If txtProductID.Text = "" And txtProductQuan.Text And txtBuyingPrice.Text = "" And txtSellingPrice.Text = "" And txtDescription.Text = "" Then
+                MsgBox("Please select from stock page list of item that update", vbCritical, "Invalid Update")
+            ElseIf MsgBox("Do you want to save the changes you made to its database?", vbQuestion + vbYesNo, "Updating...") = MsgBoxResult.Yes Then
+                OpenDatabase()
+                dbcmd = New NpgsqlCommand("UPDATE tblstock SET ""Product ID""= '" & txtProductID.Text.Trim & "', ""Product Description""= '" & txtDescription.Text.Trim & "', ""Product Quantity""= '" & txtProductQuan.Text & "', ""Buying Price""= '" & txtBuyingPrice.Text.Trim & "', ""Selling Price""= '" & txtSellingPrice.Text.Trim & "' WHERE ""Product ID"" like '" & txtProductID.Text.Trim & "'", conn)
+                dbcmd.ExecuteNonQuery()
+                sqlquery2()
+                dgStock.DataSource = dbds.Tables("tblstock")
+                txtclear()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If MsgBox("Are you sure do want to delete this from database?", MsgBoxStyle.Critical + MsgBoxStyle.YesNo, "Delete....") = MsgBoxResult.Yes Then
-            OpenDatabase()
-            dbcmd = New NpgsqlCommand("DELETE FROM tblstock WHERE ""Product ID"" like '" & txtProductID.Text.Trim & "'", conn)
-            dbcmd.ExecuteNonQuery()
-            sqlquery2()
-            dgStock.DataSource = dbds.Tables("tblstock")
-            txtclear()
-        End If
+        Try
+            If MsgBox("Are you sure do want to delete this from database?", MsgBoxStyle.Critical + MsgBoxStyle.YesNo, "Delete....") = MsgBoxResult.Yes Then
+                OpenDatabase()
+                dbcmd = New NpgsqlCommand("DELETE FROM tblstock WHERE ""Product ID"" like '" & txtProductID.Text.Trim & "'", conn)
+                dbcmd.ExecuteNonQuery()
+                sqlquery2()
+                dgStock.DataSource = dbds.Tables("tblstock")
+                txtclear()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Private Sub btnUploadImage_Click(sender As Object, e As EventArgs) Handles btnUploadImage.Click
         If txtProductID.Text.Trim.Length > 0 Then

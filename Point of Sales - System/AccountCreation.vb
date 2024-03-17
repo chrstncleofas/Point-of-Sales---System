@@ -47,13 +47,17 @@ Public Class AccountCreation
         End Try
     End Sub
     Private Sub AccountCreation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        autouseridnumber()
-        lock()
-        d1.Format = DateTimePickerFormat.Custom
-        d1.CustomFormat = "MM/dd/yyyy"
-        opendb()
-        sqlquery()
-        dgList.DataSource = dbds.Tables("tbluser")
+        Try
+            autouseridnumber()
+            lock()
+            d1.Format = DateTimePickerFormat.Custom
+            d1.CustomFormat = "MM/dd/yyyy"
+            opendb()
+            sqlquery()
+            dgList.DataSource = dbds.Tables("tbluser")
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Sub display()
         Try
@@ -66,39 +70,61 @@ Public Class AccountCreation
         End Try
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If txtpw.Text.Trim = txtrpw.Text.Trim Then
-            If sw = False Then
-                If cbopv.Text = "" And txtun.Text = "" And txtpw.Text = "" And txtpost.Text = "" And txtrpw.Text = "" Then
-                    MsgBox("Please fill up all fields", vbCritical, "Reminder..")
-                ElseIf MsgBox("Creating account successfully", vbInformation + vbYesNo, "Creating Account") = MsgBoxResult.Yes Then
-                    OpenDatabase()
-                    dbcmd = New NpgsqlCommand("INSERT INTO tbluser(""User ID"", ""User Name"", ""Password"", ""Position"", ""Privileges"", ""DateTime"") VALUES ('" & txtid.Text.Trim & "','" & txtun.Text.Trim & "','" & txtpw.Text.Trim & "','" & txtpost.Text.Trim & "','" & cbopv.Text.Trim & "','" & d1.Value & "')", conn)
-                    dbcmd.ExecuteNonQuery()
-                    sqlquery()
-                    txtclear()
-                    dgList.DataSource = dbds.Tables("tbluser")
-                Else
-                    txtid.Focus()
+        Try
+            If txtpw.Text.Trim = txtrpw.Text.Trim Then
+                If sw = False Then
+                    If cbopv.Text = "" And txtun.Text = "" And txtpw.Text = "" And txtpost.Text = "" And txtrpw.Text = "" Then
+                        MsgBox("Please fill up all fields", vbCritical, "Reminder..")
+                    ElseIf MsgBox("Creating account successfully", vbInformation + vbYesNo, "Creating Account") = MsgBoxResult.Yes Then
+                        OpenDatabase()
+                        dbcmd = New NpgsqlCommand("INSERT INTO tbluser(""User ID"", ""User Name"", ""Password"", ""Position"", ""Privileges"", ""DateTime"") VALUES ('" & txtid.Text.Trim & "','" & txtun.Text.Trim & "','" & txtpw.Text.Trim & "','" & txtpost.Text.Trim & "','" & cbopv.Text.Trim & "','" & d1.Value & "')", conn)
+                        dbcmd.ExecuteNonQuery()
+                        sqlquery()
+                        txtclear()
+                        dgList.DataSource = dbds.Tables("tbluser")
+                    Else
+                        txtid.Focus()
+                    End If
                 End If
+            Else
+                MsgBox("Your password not match !!!", vbCritical, "Password Inccorrect")
+                txtpw.Focus()
+                txtpw.Clear()
+                txtrpw.Clear()
             End If
-        Else
-            MsgBox("Your password not match !!!", vbCritical, "Password Inccorrect")
-            txtpw.Focus()
-            txtpw.Clear()
-            txtrpw.Clear()
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If MsgBox("Are you sure do want to change your details", vbQuestion + vbYesNo, "Updating...") = MsgBoxResult.Yes Then
-            OpenDatabase()
-            dbcmd = New NpgsqlCommand("UPDATE tbluser SET ""User ID""= '" & txtid.Text.Trim & "', ""User Name""= '" & txtun.Text.Trim & "', ""Password""= '" & txtpw.Text.Trim & "', ""Position""= '" & txtpost.Text.Trim & "', ""Privileges""= '" & cbopv.Text.Trim & "' WHERE ""User ID"" like '" & txtid.Text.Trim & "'", conn)
-            dbcmd.ExecuteNonQuery()
-            sqlquery()
-            dgList.DataSource = dbds.Tables("tbluser")
-            txtclear()
-        Else
-            MsgBox("Error", vbCritical, "Warning!!1!")
-        End If
+        Try
+            If MsgBox("Are you sure do want to change your details", vbQuestion + vbYesNo, "Updating...") = MsgBoxResult.Yes Then
+                OpenDatabase()
+                dbcmd = New NpgsqlCommand("UPDATE tbluser SET ""User ID""= '" & txtid.Text.Trim & "', ""User Name""= '" & txtun.Text.Trim & "', ""Password""= '" & txtpw.Text.Trim & "', ""Position""= '" & txtpost.Text.Trim & "', ""Privileges""= '" & cbopv.Text.Trim & "' WHERE ""User ID"" like '" & txtid.Text.Trim & "'", conn)
+                dbcmd.ExecuteNonQuery()
+                sqlquery()
+                dgList.DataSource = dbds.Tables("tbluser")
+                txtclear()
+            Else
+                MsgBox("Error", vbCritical, "Warning!!1!")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Try
+            If MsgBox("Are you sure do want to delete this record, the file record will be permanently delete", MsgBoxStyle.Critical + MsgBoxStyle.YesNo, "Delete") = MsgBoxResult.Yes Then
+                OpenDatabase()
+                dbcmd = New NpgsqlCommand("DELETE FROM tbluser WHERE ""User ID"" like '" & txtid.Text.Trim & "'", conn)
+                dbcmd.ExecuteNonQuery()
+                sqlquery()
+                dgList.DataSource = dbds.Tables("tbluser")
+                txtclear()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         autouseridnumber()
