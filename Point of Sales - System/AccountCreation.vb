@@ -1,4 +1,5 @@
-﻿Imports Npgsql
+﻿Imports System.IO
+Imports Npgsql
 Public Class AccountCreation
     Sub txtclear()
         txtid.Text = ""
@@ -30,7 +31,7 @@ Public Class AccountCreation
     Sub autouseridnumber()
         Try
             OpenDatabase()
-            tbluser = New NpgsqlDataAdapter("SELECT ""User ID"" FROM tbluser ORDER BY ""User ID"" DESC", conn)
+            tbluser = New NpgsqlDataAdapter("SELECT ""User ID"" FROM tbluser ORDER BY ""User ID"" ASC", conn)
             dbds = New DataSet
             tbluser.Fill(dbds, "tbluser")
             If (dbds.Tables(0).Rows.Count > 0) Then
@@ -133,12 +134,17 @@ Public Class AccountCreation
     Private Sub btnUploadImage_Click(sender As Object, e As EventArgs) Handles btnUploadImage.Click
         If txtid.Text.Trim.Length > 0 Then
             OpenFileDialog1.FileName = ""
-            'OpenFileDialog1.ShowDialog()
+            ' OpenFileDialog1.ShowDialog()
             If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
                 Try
-                    My.Computer.FileSystem.CopyFile(OpenFileDialog1.FileName, Application.StartupPath & "\images\" & Trim(txtid.Text) & ".jpg", True)
-                    idpict.ImageLocation = Application.StartupPath & "\images\" & txtid.Text.Trim & ".jpg"
-                    idpict.Load()
+                    Dim fileExtension As String = Path.GetExtension(OpenFileDialog1.FileName).ToLower()
+                    If fileExtension = ".jpg" OrElse fileExtension = ".png" OrElse fileExtension = ".bmp" Then
+                        My.Computer.FileSystem.CopyFile(OpenFileDialog1.FileName, Application.StartupPath & "\images\" & Trim(txtid.Text) & fileExtension, True)
+                        idpict.ImageLocation = Application.StartupPath & "\images\" & txtid.Text.Trim & fileExtension
+                        idpict.Load()
+                    Else
+                        MsgBox("Unsupported image format. Please select a .jpg, .png, or .bmp file.", MsgBoxStyle.Information, "Upload Image")
+                    End If
                 Catch err As Exception
                     MsgBox(err.Message)
                 End Try
@@ -153,10 +159,18 @@ Public Class AccountCreation
         dgList.Rows(recpointer).Selected = True
         display()
         Try
-            idpict.ImageLocation = ""
-            idpict.Refresh()
-            idpict.ImageLocation = Application.StartupPath & "\images\" & txtid.Text.Trim & ".jpg"
-            idpict.Load()
+            Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+            For Each extension As String In allowedExtensions
+                Dim imagePath As String = Application.StartupPath & "\images\" & txtid.Text.Trim & extension
+                If File.Exists(imagePath) Then
+                    idpict.ImageLocation = imagePath
+                    idpict.Refresh()
+                    Exit For
+                End If
+            Next
+            If idpict.Image Is Nothing Then
+                MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+            End If
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
@@ -167,10 +181,18 @@ Public Class AccountCreation
         dgList.Rows(recpointer).Selected = True
         display()
         Try
-            idpict.ImageLocation = ""
-            idpict.Refresh()
-            idpict.ImageLocation = Application.StartupPath & "\images\" & txtid.Text.Trim & ".jpg"
-            idpict.Load()
+            Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+            For Each extension As String In allowedExtensions
+                Dim imagePath As String = Application.StartupPath & "\images\" & txtid.Text.Trim & extension
+                If File.Exists(imagePath) Then
+                    idpict.ImageLocation = imagePath
+                    idpict.Refresh()
+                    Exit For
+                End If
+            Next
+            If idpict.Image Is Nothing Then
+                MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+            End If
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
@@ -182,10 +204,18 @@ Public Class AccountCreation
             dgList.Rows(recpointer).Selected = True
             display()
             Try
-                idpict.ImageLocation = ""
-                idpict.Refresh()
-                idpict.ImageLocation = Application.StartupPath & "\images\" & txtid.Text.Trim & ".jpg"
-                idpict.Load()
+                Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+                For Each extension As String In allowedExtensions
+                    Dim imagePath As String = Application.StartupPath & "\images\" & txtid.Text.Trim & extension
+                    If File.Exists(imagePath) Then
+                        idpict.ImageLocation = imagePath
+                        idpict.Refresh()
+                        Exit For
+                    End If
+                Next
+                If idpict.Image Is Nothing Then
+                    MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+                End If
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
             End Try
@@ -198,13 +228,24 @@ Public Class AccountCreation
             dgList.Rows(recpointer).Selected = True
             display()
             Try
-                idpict.ImageLocation = ""
-                idpict.Refresh()
-                idpict.ImageLocation = Application.StartupPath & "\images\" & txtid.Text.Trim & ".jpg"
-                idpict.Load()
+                Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+                For Each extension As String In allowedExtensions
+                    Dim imagePath As String = Application.StartupPath & "\images\" & txtid.Text.Trim & extension
+                    If File.Exists(imagePath) Then
+                        idpict.ImageLocation = imagePath
+                        idpict.Refresh()
+                        Exit For
+                    End If
+                Next
+                If idpict.Image Is Nothing Then
+                    MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+                End If
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
             End Try
         End If
+    End Sub
+    Private Sub btnEnable_Click(sender As Object, e As EventArgs) Handles btnEnable.Click
+        unlock()
     End Sub
 End Class

@@ -1,4 +1,5 @@
-﻿Imports Npgsql
+﻿Imports System.IO
+Imports Npgsql
 Public Class Inventory
     Sub txtclear()
         txtProductID.Text = ""
@@ -90,9 +91,12 @@ Public Class Inventory
             OpenFileDialog1.FileName = ""
             If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
                 Try
-                    My.Computer.FileSystem.CopyFile(OpenFileDialog1.FileName, Application.StartupPath & "\products\" & Trim(txtProductID.Text) & ".jpg", True)
-                    idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
-                    idPict.Load()
+                    Dim fileExtension As String = Path.GetExtension(OpenFileDialog1.FileName).ToLower()
+                    If fileExtension = ".jpg" OrElse fileExtension = ".png" OrElse fileExtension = ".bmp" Then
+                        My.Computer.FileSystem.CopyFile(OpenFileDialog1.FileName, Application.StartupPath & "\products\" & Trim(txtProductID.Text) & fileExtension, True)
+                        idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & fileExtension
+                        idPict.Load()
+                    End If
                 Catch err As Exception
                     MsgBox(err.Message, vbCritical, "Error")
                 End Try
@@ -108,10 +112,18 @@ Public Class Inventory
         display()
         Criticals()
         Try
-            idPict.ImageLocation = ""
-            idPict.Refresh()
-            idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
-            idPict.Load()
+            Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+            For Each extension As String In allowedExtensions
+                Dim imagePath As String = Application.StartupPath & "\products\" & txtProductID.Text.Trim & extension
+                If File.Exists(imagePath) Then
+                    idPict.ImageLocation = imagePath
+                    idPict.Refresh()
+                    Exit For
+                End If
+            Next
+            If idPict.Image Is Nothing Then
+                MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+            End If
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
@@ -123,10 +135,18 @@ Public Class Inventory
         display()
         Criticals()
         Try
-            idPict.ImageLocation = ""
-            idPict.Refresh()
-            idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
-            idPict.Load()
+            Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+            For Each extension As String In allowedExtensions
+                Dim imagePath As String = Application.StartupPath & "\products\" & txtProductID.Text.Trim & extension
+                If File.Exists(imagePath) Then
+                    idPict.ImageLocation = imagePath
+                    idPict.Refresh()
+                    Exit For
+                End If
+            Next
+            If idPict.Image Is Nothing Then
+                MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+            End If
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
@@ -139,10 +159,18 @@ Public Class Inventory
             display()
             Criticals()
             Try
-                idPict.ImageLocation = ""
-                idPict.Refresh()
-                idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
-                idPict.Load()
+                Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+                For Each extension As String In allowedExtensions
+                    Dim imagePath As String = Application.StartupPath & "\products\" & txtProductID.Text.Trim & extension
+                    If File.Exists(imagePath) Then
+                        idPict.ImageLocation = imagePath
+                        idPict.Refresh()
+                        Exit For
+                    End If
+                Next
+                If idPict.Image Is Nothing Then
+                    MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+                End If
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
             End Try
@@ -156,10 +184,18 @@ Public Class Inventory
             display()
             Criticals()
             Try
-                idPict.ImageLocation = ""
-                idPict.Refresh()
-                idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
-                idPict.Load()
+                Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+                For Each extension As String In allowedExtensions
+                    Dim imagePath As String = Application.StartupPath & "\products\" & txtProductID.Text.Trim & extension
+                    If File.Exists(imagePath) Then
+                        idPict.ImageLocation = imagePath
+                        idPict.Refresh()
+                        Exit For
+                    End If
+                Next
+                If idPict.Image Is Nothing Then
+                    MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+                End If
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
             End Try
@@ -177,10 +213,18 @@ Public Class Inventory
                 trec = CInt(dbds.Tables("tblstock").Rows.Count) - 1
                 dgStock.DataSource = dbds.Tables("tblstock")
                 display()
-                idPict.ImageLocation = ""
-                idPict.Refresh()
-                idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
-                idPict.Load()
+                Dim allowedExtensions As String() = {".jpg", ".png", ".bmp"}
+                For Each extension As String In allowedExtensions
+                    Dim imagePath As String = Application.StartupPath & "\products\" & txtProductID.Text.Trim & extension
+                    If File.Exists(imagePath) Then
+                        idPict.ImageLocation = imagePath
+                        idPict.Refresh()
+                        Exit For
+                    End If
+                Next
+                If idPict.Image Is Nothing Then
+                    MsgBox("Image file not found.", MsgBoxStyle.Exclamation, "Warning")
+                End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")

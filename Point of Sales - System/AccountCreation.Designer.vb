@@ -51,6 +51,7 @@ Partial Class AccountCreation
         Me.btnNext = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnEnable = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.idpict, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,7 +137,7 @@ Partial Class AccountCreation
         '
         Me.txtpost.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpost.FormattingEnabled = True
-        Me.txtpost.Items.AddRange(New Object() {"IT Manager", "Cashier", "Clerk", "Sales Agent", "Supervisor"})
+        Me.txtpost.Items.AddRange(New Object() {"System Admin", "IT Manager", "Cashier", "Clerk", "Sales Agent", "Supervisor"})
         Me.txtpost.Location = New System.Drawing.Point(699, 71)
         Me.txtpost.Name = "txtpost"
         Me.txtpost.Size = New System.Drawing.Size(159, 38)
@@ -199,7 +200,7 @@ Partial Class AccountCreation
         '
         'd1
         '
-        Me.d1.Location = New System.Drawing.Point(259, 220)
+        Me.d1.Location = New System.Drawing.Point(467, 263)
         Me.d1.Name = "d1"
         Me.d1.Size = New System.Drawing.Size(104, 20)
         Me.d1.TabIndex = 15
@@ -278,10 +279,10 @@ Partial Class AccountCreation
         Me.dgList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgList.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dgList.Location = New System.Drawing.Point(253, 244)
+        Me.dgList.Location = New System.Drawing.Point(253, 290)
         Me.dgList.Name = "dgList"
         Me.dgList.ReadOnly = True
-        Me.dgList.Size = New System.Drawing.Size(642, 245)
+        Me.dgList.Size = New System.Drawing.Size(642, 199)
         Me.dgList.TabIndex = 17
         '
         'OpenFileDialog1
@@ -290,7 +291,7 @@ Partial Class AccountCreation
         '
         'btnFirst
         '
-        Me.btnFirst.Location = New System.Drawing.Point(565, 218)
+        Me.btnFirst.Location = New System.Drawing.Point(577, 260)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(75, 23)
         Me.btnFirst.TabIndex = 18
@@ -299,7 +300,7 @@ Partial Class AccountCreation
         '
         'btnLast
         '
-        Me.btnLast.Location = New System.Drawing.Point(646, 219)
+        Me.btnLast.Location = New System.Drawing.Point(658, 261)
         Me.btnLast.Name = "btnLast"
         Me.btnLast.Size = New System.Drawing.Size(75, 23)
         Me.btnLast.TabIndex = 19
@@ -308,7 +309,7 @@ Partial Class AccountCreation
         '
         'btnPrev
         '
-        Me.btnPrev.Location = New System.Drawing.Point(808, 219)
+        Me.btnPrev.Location = New System.Drawing.Point(820, 261)
         Me.btnPrev.Name = "btnPrev"
         Me.btnPrev.Size = New System.Drawing.Size(75, 23)
         Me.btnPrev.TabIndex = 21
@@ -317,7 +318,7 @@ Partial Class AccountCreation
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(727, 218)
+        Me.btnNext.Location = New System.Drawing.Point(739, 260)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(75, 23)
         Me.btnNext.TabIndex = 20
@@ -326,21 +327,30 @@ Partial Class AccountCreation
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(369, 219)
+        Me.btnEdit.Location = New System.Drawing.Point(739, 232)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(75, 23)
         Me.btnEdit.TabIndex = 22
-        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.Text = "Update"
         Me.btnEdit.UseVisualStyleBackColor = True
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(450, 219)
+        Me.btnDelete.Location = New System.Drawing.Point(820, 232)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 23)
         Me.btnDelete.TabIndex = 23
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        'btnEnable
+        '
+        Me.btnEnable.Location = New System.Drawing.Point(658, 232)
+        Me.btnEnable.Name = "btnEnable"
+        Me.btnEnable.Size = New System.Drawing.Size(75, 23)
+        Me.btnEnable.TabIndex = 24
+        Me.btnEnable.Text = "Enable Edit"
+        Me.btnEnable.UseVisualStyleBackColor = True
         '
         'AccountCreation
         '
@@ -348,6 +358,7 @@ Partial Class AccountCreation
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(895, 489)
+        Me.Controls.Add(Me.btnEnable)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnPrev)
@@ -411,4 +422,5 @@ Partial Class AccountCreation
     Friend WithEvents btnNext As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnDelete As Button
+    Friend WithEvents btnEnable As Button
 End Class

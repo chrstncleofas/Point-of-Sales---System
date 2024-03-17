@@ -31,7 +31,7 @@ Module connectionToDatabase
     Public Sub opendb()
         Try
             OpenDatabase()
-            tbluser = New NpgsqlDataAdapter("SELECT * FROM tbluser", conn)
+            tbluser = New NpgsqlDataAdapter("SELECT * FROM tbluser ORDER BY ""User ID"" ASC", conn)
             dbds = New DataSet()
             tbluser.Fill(dbds, "tbluser")
 
@@ -48,7 +48,7 @@ Module connectionToDatabase
     Public Sub sqlquery()
         Try
             OpenDatabase()
-            tbluser = New NpgsqlDataAdapter("SELECT ""User ID"", ""User Name"", ""Position"", ""Privileges"", ""DateTime"" FROM tbluser", conn)
+            tbluser = New NpgsqlDataAdapter("SELECT ""User ID"", ""User Name"", ""Position"", ""Privileges"", ""DateTime"" FROM tbluser ORDER BY ""User ID"" ASC", conn)
             dbds = New DataSet()
             tbluser.Fill(dbds, "tbluser")
 
