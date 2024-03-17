@@ -290,5 +290,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-user-male-128.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-upload-96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

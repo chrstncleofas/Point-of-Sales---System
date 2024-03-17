@@ -32,6 +32,7 @@ Partial Class LoginForm
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.linkLabelCreate = New System.Windows.Forms.LinkLabel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -61,11 +62,11 @@ Partial Class LoginForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(46, 170)
+        Me.Label1.Location = New System.Drawing.Point(36, 165)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(274, 40)
+        Me.Label1.Size = New System.Drawing.Size(296, 40)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Point of Sale System"
         '
@@ -121,7 +122,7 @@ Partial Class LoginForm
         Me.btnLogin.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnLogin.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogin.ForeColor = System.Drawing.Color.White
-        Me.btnLogin.Location = New System.Drawing.Point(431, 256)
+        Me.btnLogin.Location = New System.Drawing.Point(431, 281)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(209, 44)
         Me.btnLogin.TabIndex = 5
@@ -133,12 +134,22 @@ Partial Class LoginForm
         Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(431, 306)
+        Me.btnCancel.Location = New System.Drawing.Point(431, 331)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(209, 44)
         Me.btnCancel.TabIndex = 6
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = False
+        '
+        'linkLabelCreate
+        '
+        Me.linkLabelCreate.AutoSize = True
+        Me.linkLabelCreate.Location = New System.Drawing.Point(432, 247)
+        Me.linkLabelCreate.Name = "linkLabelCreate"
+        Me.linkLabelCreate.Size = New System.Drawing.Size(81, 13)
+        Me.linkLabelCreate.TabIndex = 7
+        Me.linkLabelCreate.TabStop = True
+        Me.linkLabelCreate.Text = "Create Account"
         '
         'LoginForm
         '
@@ -146,6 +157,7 @@ Partial Class LoginForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(711, 405)
         Me.ControlBox = False
+        Me.Controls.Add(Me.linkLabelCreate)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.Label4)
@@ -174,4 +186,5 @@ Partial Class LoginForm
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents btnLogin As Button
     Friend WithEvents btnCancel As Button
+    Friend WithEvents linkLabelCreate As LinkLabel
 End Class

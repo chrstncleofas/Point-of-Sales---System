@@ -27,28 +27,28 @@ Partial Class MainForm
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.grpCashier = New System.Windows.Forms.GroupBox()
+        Me.picCashier = New System.Windows.Forms.PictureBox()
         Me.grpSales = New System.Windows.Forms.GroupBox()
+        Me.picSales = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.grpInventory = New System.Windows.Forms.GroupBox()
+        Me.picInventory = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.grpUsers = New System.Windows.Forms.GroupBox()
+        Me.picUsers = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblLoginAs = New System.Windows.Forms.Label()
         Me.dtTime = New System.Windows.Forms.DateTimePicker()
-        Me.picUsers = New System.Windows.Forms.PictureBox()
-        Me.picInventory = New System.Windows.Forms.PictureBox()
-        Me.picSales = New System.Windows.Forms.PictureBox()
-        Me.picCashier = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.grpCashier.SuspendLayout()
+        CType(Me.picCashier, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSales.SuspendLayout()
+        CType(Me.picSales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpInventory.SuspendLayout()
+        CType(Me.picInventory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpUsers.SuspendLayout()
         CType(Me.picUsers, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picInventory, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picSales, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picCashier, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -102,6 +102,16 @@ Partial Class MainForm
         Me.grpCashier.TabStop = False
         Me.grpCashier.Visible = False
         '
+        'picCashier
+        '
+        Me.picCashier.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.picCashier.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_add_shopping_cart_96
+        Me.picCashier.Location = New System.Drawing.Point(23, 23)
+        Me.picCashier.Name = "picCashier"
+        Me.picCashier.Size = New System.Drawing.Size(95, 94)
+        Me.picCashier.TabIndex = 2
+        Me.picCashier.TabStop = False
+        '
         'grpSales
         '
         Me.grpSales.Controls.Add(Me.picSales)
@@ -112,6 +122,16 @@ Partial Class MainForm
         Me.grpSales.TabIndex = 5
         Me.grpSales.TabStop = False
         Me.grpSales.Visible = False
+        '
+        'picSales
+        '
+        Me.picSales.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.picSales.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_graph_report_100
+        Me.picSales.Location = New System.Drawing.Point(23, 23)
+        Me.picSales.Name = "picSales"
+        Me.picSales.Size = New System.Drawing.Size(95, 94)
+        Me.picSales.TabIndex = 2
+        Me.picSales.TabStop = False
         '
         'Label3
         '
@@ -135,6 +155,17 @@ Partial Class MainForm
         Me.grpInventory.TabStop = False
         Me.grpInventory.Visible = False
         '
+        'picInventory
+        '
+        Me.picInventory.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.picInventory.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_move_stock_64
+        Me.picInventory.Location = New System.Drawing.Point(35, 23)
+        Me.picInventory.Name = "picInventory"
+        Me.picInventory.Size = New System.Drawing.Size(90, 94)
+        Me.picInventory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picInventory.TabIndex = 2
+        Me.picInventory.TabStop = False
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -157,6 +188,17 @@ Partial Class MainForm
         Me.grpUsers.TabStop = False
         Me.grpUsers.Visible = False
         '
+        'picUsers
+        '
+        Me.picUsers.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.picUsers.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_user_male_128
+        Me.picUsers.Location = New System.Drawing.Point(23, 23)
+        Me.picUsers.Name = "picUsers"
+        Me.picUsers.Size = New System.Drawing.Size(95, 94)
+        Me.picUsers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picUsers.TabIndex = 2
+        Me.picUsers.TabStop = False
+        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -171,19 +213,22 @@ Partial Class MainForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(19, 417)
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(17, 404)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(51, 13)
+        Me.Label6.Size = New System.Drawing.Size(98, 30)
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Login As:"
         '
         'lblLoginAs
         '
         Me.lblLoginAs.AutoSize = True
-        Me.lblLoginAs.Location = New System.Drawing.Point(76, 417)
+        Me.lblLoginAs.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoginAs.Location = New System.Drawing.Point(112, 404)
         Me.lblLoginAs.Name = "lblLoginAs"
-        Me.lblLoginAs.Size = New System.Drawing.Size(0, 13)
+        Me.lblLoginAs.Size = New System.Drawing.Size(0, 30)
         Me.lblLoginAs.TabIndex = 9
+        Me.lblLoginAs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'dtTime
         '
@@ -191,48 +236,6 @@ Partial Class MainForm
         Me.dtTime.Name = "dtTime"
         Me.dtTime.Size = New System.Drawing.Size(200, 20)
         Me.dtTime.TabIndex = 10
-        '
-        'picUsers
-        '
-        Me.picUsers.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.picUsers.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_user_male_128
-        Me.picUsers.Location = New System.Drawing.Point(23, 23)
-        Me.picUsers.Name = "picUsers"
-        Me.picUsers.Size = New System.Drawing.Size(95, 94)
-        Me.picUsers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picUsers.TabIndex = 2
-        Me.picUsers.TabStop = False
-        '
-        'picInventory
-        '
-        Me.picInventory.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.picInventory.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_move_stock_64
-        Me.picInventory.Location = New System.Drawing.Point(35, 23)
-        Me.picInventory.Name = "picInventory"
-        Me.picInventory.Size = New System.Drawing.Size(90, 94)
-        Me.picInventory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picInventory.TabIndex = 2
-        Me.picInventory.TabStop = False
-        '
-        'picSales
-        '
-        Me.picSales.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.picSales.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_graph_report_100
-        Me.picSales.Location = New System.Drawing.Point(23, 23)
-        Me.picSales.Name = "picSales"
-        Me.picSales.Size = New System.Drawing.Size(95, 94)
-        Me.picSales.TabIndex = 2
-        Me.picSales.TabStop = False
-        '
-        'picCashier
-        '
-        Me.picCashier.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.picCashier.Image = Global.Point_of_Sales___System.My.Resources.Resources.icons8_add_shopping_cart_96
-        Me.picCashier.Location = New System.Drawing.Point(23, 23)
-        Me.picCashier.Name = "picCashier"
-        Me.picCashier.Size = New System.Drawing.Size(95, 94)
-        Me.picCashier.TabIndex = 2
-        Me.picCashier.TabStop = False
         '
         'MainForm
         '
@@ -257,16 +260,16 @@ Partial Class MainForm
         Me.Panel1.PerformLayout()
         Me.grpCashier.ResumeLayout(False)
         Me.grpCashier.PerformLayout()
+        CType(Me.picCashier, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSales.ResumeLayout(False)
         Me.grpSales.PerformLayout()
+        CType(Me.picSales, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpInventory.ResumeLayout(False)
         Me.grpInventory.PerformLayout()
+        CType(Me.picInventory, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpUsers.ResumeLayout(False)
         Me.grpUsers.PerformLayout()
         CType(Me.picUsers, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picInventory, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picSales, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picCashier, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

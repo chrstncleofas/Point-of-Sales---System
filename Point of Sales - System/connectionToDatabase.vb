@@ -32,7 +32,6 @@ Module connectionToDatabase
     Public Sub opendb()
         Try
             OpenDatabase()
-
             tbluser = New NpgsqlDataAdapter("SELECT * FROM tbluser", conn)
             dbds = New DataSet()
             tbluser.Fill(dbds, "tbluser")

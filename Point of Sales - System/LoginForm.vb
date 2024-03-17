@@ -1,5 +1,4 @@
 ﻿Imports Npgsql
-
 Public Class LoginForm
     Public xname As String
     Public xpost As String
@@ -39,5 +38,9 @@ Public Class LoginForm
                 txtUsername.Focus()
             End If
         End If
+    End Sub
+    Private Sub linkLabelCreate_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabelCreate.LinkClicked
+        AccountCreation.Show()
+        Me.Hide()
     End Sub
 End Class
