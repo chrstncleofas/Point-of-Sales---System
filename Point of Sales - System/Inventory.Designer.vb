@@ -22,8 +22,8 @@ Partial Class Inventory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.idPict = New System.Windows.Forms.PictureBox()
         Me.txtProductID = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -53,6 +53,8 @@ Partial Class Inventory
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.dgStock = New System.Windows.Forms.DataGridView()
         Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.btnHome = New System.Windows.Forms.Button()
         CType(Me.idPict, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgStock, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -231,7 +233,7 @@ Partial Class Inventory
         'btnDelete
         '
         Me.btnDelete.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnDelete.Location = New System.Drawing.Point(455, 234)
+        Me.btnDelete.Location = New System.Drawing.Point(732, 197)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 23)
         Me.btnDelete.TabIndex = 29
@@ -241,7 +243,7 @@ Partial Class Inventory
         'btnEdit
         '
         Me.btnEdit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnEdit.Location = New System.Drawing.Point(374, 234)
+        Me.btnEdit.Location = New System.Drawing.Point(651, 197)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(75, 23)
         Me.btnEdit.TabIndex = 28
@@ -251,7 +253,7 @@ Partial Class Inventory
         'btnPrev
         '
         Me.btnPrev.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnPrev.Location = New System.Drawing.Point(813, 234)
+        Me.btnPrev.Location = New System.Drawing.Point(813, 227)
         Me.btnPrev.Name = "btnPrev"
         Me.btnPrev.Size = New System.Drawing.Size(75, 23)
         Me.btnPrev.TabIndex = 27
@@ -261,7 +263,7 @@ Partial Class Inventory
         'btnNext
         '
         Me.btnNext.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnNext.Location = New System.Drawing.Point(732, 234)
+        Me.btnNext.Location = New System.Drawing.Point(732, 227)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(75, 23)
         Me.btnNext.TabIndex = 26
@@ -271,7 +273,7 @@ Partial Class Inventory
         'btnLast
         '
         Me.btnLast.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnLast.Location = New System.Drawing.Point(651, 234)
+        Me.btnLast.Location = New System.Drawing.Point(651, 227)
         Me.btnLast.Name = "btnLast"
         Me.btnLast.Size = New System.Drawing.Size(75, 23)
         Me.btnLast.TabIndex = 25
@@ -281,7 +283,7 @@ Partial Class Inventory
         'btnFirst
         '
         Me.btnFirst.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnFirst.Location = New System.Drawing.Point(570, 233)
+        Me.btnFirst.Location = New System.Drawing.Point(570, 226)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(75, 23)
         Me.btnFirst.TabIndex = 24
@@ -291,7 +293,7 @@ Partial Class Inventory
         'btnAdd
         '
         Me.btnAdd.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnAdd.Location = New System.Drawing.Point(293, 234)
+        Me.btnAdd.Location = New System.Drawing.Point(570, 197)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 30
@@ -304,8 +306,8 @@ Partial Class Inventory
         Me.dgStock.AllowUserToDeleteRows = False
         Me.dgStock.AllowUserToResizeColumns = False
         Me.dgStock.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.dgStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.dgStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.dgStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgStock.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -313,18 +315,38 @@ Partial Class Inventory
         Me.dgStock.Location = New System.Drawing.Point(0, 260)
         Me.dgStock.Name = "dgStock"
         Me.dgStock.ReadOnly = True
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.dgStock.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.dgStock.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.dgStock.Size = New System.Drawing.Size(900, 245)
         Me.dgStock.TabIndex = 31
         '
         'txtSearch
         '
         Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(12, 229)
+        Me.txtSearch.Location = New System.Drawing.Point(375, 224)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(155, 25)
+        Me.txtSearch.Size = New System.Drawing.Size(189, 25)
         Me.txtSearch.TabIndex = 32
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(322, 228)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(52, 17)
+        Me.Label9.TabIndex = 33
+        Me.Label9.Text = "Search:"
+        '
+        'btnHome
+        '
+        Me.btnHome.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnHome.Location = New System.Drawing.Point(813, 197)
+        Me.btnHome.Name = "btnHome"
+        Me.btnHome.Size = New System.Drawing.Size(75, 23)
+        Me.btnHome.TabIndex = 34
+        Me.btnHome.Text = "Home"
+        Me.btnHome.UseVisualStyleBackColor = True
         '
         'Inventory
         '
@@ -332,6 +354,8 @@ Partial Class Inventory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(900, 505)
+        Me.Controls.Add(Me.btnHome)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.dgStock)
         Me.Controls.Add(Me.btnAdd)
@@ -400,4 +424,6 @@ Partial Class Inventory
     Friend WithEvents btnAdd As Button
     Friend WithEvents dgStock As DataGridView
     Friend WithEvents txtSearch As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents btnHome As Button
 End Class
