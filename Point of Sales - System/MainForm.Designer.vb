@@ -40,7 +40,9 @@ Partial Class MainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblLoginAs = New System.Windows.Forms.Label()
         Me.dtTime = New System.Windows.Forms.DateTimePicker()
+        Me.btnLogout = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.grpCashier.SuspendLayout()
         CType(Me.picCashier, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSales.SuspendLayout()
@@ -55,7 +57,7 @@ Partial Class MainForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(205, 30)
+        Me.Label1.Location = New System.Drawing.Point(204, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(392, 50)
         Me.Label1.TabIndex = 0
@@ -74,10 +76,11 @@ Partial Class MainForm
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.btnLogout)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 114)
+        Me.Panel2.Location = New System.Drawing.Point(0, 83)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(800, 10)
+        Me.Panel2.Size = New System.Drawing.Size(800, 41)
         Me.Panel2.TabIndex = 2
         '
         'Label2
@@ -95,7 +98,7 @@ Partial Class MainForm
         '
         Me.grpCashier.Controls.Add(Me.picCashier)
         Me.grpCashier.Controls.Add(Me.Label2)
-        Me.grpCashier.Location = New System.Drawing.Point(22, 157)
+        Me.grpCashier.Location = New System.Drawing.Point(23, 187)
         Me.grpCashier.Name = "grpCashier"
         Me.grpCashier.Size = New System.Drawing.Size(141, 173)
         Me.grpCashier.TabIndex = 4
@@ -116,7 +119,7 @@ Partial Class MainForm
         '
         Me.grpSales.Controls.Add(Me.picSales)
         Me.grpSales.Controls.Add(Me.Label3)
-        Me.grpSales.Location = New System.Drawing.Point(230, 157)
+        Me.grpSales.Location = New System.Drawing.Point(231, 187)
         Me.grpSales.Name = "grpSales"
         Me.grpSales.Size = New System.Drawing.Size(141, 173)
         Me.grpSales.TabIndex = 5
@@ -148,7 +151,7 @@ Partial Class MainForm
         '
         Me.grpInventory.Controls.Add(Me.picInventory)
         Me.grpInventory.Controls.Add(Me.Label4)
-        Me.grpInventory.Location = New System.Drawing.Point(434, 157)
+        Me.grpInventory.Location = New System.Drawing.Point(435, 187)
         Me.grpInventory.Name = "grpInventory"
         Me.grpInventory.Size = New System.Drawing.Size(141, 173)
         Me.grpInventory.TabIndex = 6
@@ -181,7 +184,7 @@ Partial Class MainForm
         '
         Me.grpUsers.Controls.Add(Me.picUsers)
         Me.grpUsers.Controls.Add(Me.Label5)
-        Me.grpUsers.Location = New System.Drawing.Point(633, 157)
+        Me.grpUsers.Location = New System.Drawing.Point(634, 187)
         Me.grpUsers.Name = "grpUsers"
         Me.grpUsers.Size = New System.Drawing.Size(141, 173)
         Me.grpUsers.TabIndex = 7
@@ -237,6 +240,19 @@ Partial Class MainForm
         Me.dtTime.Size = New System.Drawing.Size(200, 20)
         Me.dtTime.TabIndex = 10
         '
+        'btnLogout
+        '
+        Me.btnLogout.FlatAppearance.BorderSize = 0
+        Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogout.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogout.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnLogout.Location = New System.Drawing.Point(710, 9)
+        Me.btnLogout.Name = "btnLogout"
+        Me.btnLogout.Size = New System.Drawing.Size(80, 23)
+        Me.btnLogout.TabIndex = 0
+        Me.btnLogout.Text = "Logout"
+        Me.btnLogout.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -258,6 +274,7 @@ Partial Class MainForm
         Me.Text = "MainForm"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
         Me.grpCashier.ResumeLayout(False)
         Me.grpCashier.PerformLayout()
         CType(Me.picCashier, System.ComponentModel.ISupportInitialize).EndInit()
@@ -293,4 +310,5 @@ Partial Class MainForm
     Friend WithEvents Label6 As Label
     Friend WithEvents lblLoginAs As Label
     Friend WithEvents dtTime As DateTimePicker
+    Friend WithEvents btnLogout As Button
 End Class

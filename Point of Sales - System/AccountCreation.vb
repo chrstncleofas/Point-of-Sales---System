@@ -31,7 +31,7 @@ Public Class AccountCreation
     Sub autouseridnumber()
         Try
             OpenDatabase()
-            tbluser = New NpgsqlDataAdapter("SELECT ""User ID"" FROM tbluser ORDER BY ""User ID"" ASC", conn)
+            tbluser = New NpgsqlDataAdapter("SELECT ""User ID"" FROM tbluser ORDER BY ""User ID"" DESC", conn)
             dbds = New DataSet
             tbluser.Fill(dbds, "tbluser")
             If (dbds.Tables(0).Rows.Count > 0) Then
@@ -247,5 +247,20 @@ Public Class AccountCreation
     End Sub
     Private Sub btnEnable_Click(sender As Object, e As EventArgs) Handles btnEnable.Click
         unlock()
+    End Sub
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        If MsgBox("Are you sure do want to close this window?", vbQuestion + vbYesNo, "Closing Form......") = vbYes Then
+            Dim counter As Integer
+            For counter = 90 To 10 Step -20
+                Me.Opacity = counter / 100
+                Me.Refresh()
+                Threading.Thread.Sleep(5)
+            Next counter
+            LoginForm.Show()
+            Me.Close()
+        End If
+    End Sub
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        txtclear()
     End Sub
 End Class

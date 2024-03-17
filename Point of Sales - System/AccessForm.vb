@@ -1,5 +1,6 @@
 ﻿Imports Npgsql
-Public Class LoginForm
+
+Public Class AccessForm
     Public xname As String
     Public xpost As String
     Public xpriv As String
@@ -15,11 +16,11 @@ Public Class LoginForm
                 tbluser.Fill(dbds, "tbluser")
                 trec = dbds.Tables("tbluser").Rows.Count
                 If trec > 0 Then
-                    xname = txtUsername.Text
+                    XName = txtUsername.Text
                     'Cashier.txtCashier.Text = txtUsername.Text
                     xpost = dbds.Tables("tbluser").Rows(0).Item("Position")
                     xpriv = dbds.Tables("tbluser").Rows(0).Item("Privileges")
-                    xname = dbds.Tables("tbluser").Rows(0).Item("User Name")
+                    XName = dbds.Tables("tbluser").Rows(0).Item("User Name")
                     MsgBox("Welcome to Point of Sales " + xpriv, vbInformation, "Point of Sales Login Page")
                     txtUsername.Clear()
                     txtPassword.Clear()
@@ -40,10 +41,7 @@ Public Class LoginForm
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
     End Sub
-    Private Sub linkLabelCreate_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabelCreate.LinkClicked
-        AccessForm.Show()
-    End Sub
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         If MsgBox("Are you sure do want to close this window?", vbQuestion + vbYesNo, "Closing Form......") = vbYes Then
             Dim counter As Integer
             For counter = 90 To 10 Step -20
@@ -51,6 +49,7 @@ Public Class LoginForm
                 Me.Refresh()
                 Threading.Thread.Sleep(5)
             Next counter
+            LoginForm.Show()
             Me.Close()
         End If
     End Sub
