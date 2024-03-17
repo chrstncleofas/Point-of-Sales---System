@@ -199,7 +199,7 @@ Partial Class AccountCreation
         '
         'd1
         '
-        Me.d1.Location = New System.Drawing.Point(259, 222)
+        Me.d1.Location = New System.Drawing.Point(259, 220)
         Me.d1.Name = "d1"
         Me.d1.Size = New System.Drawing.Size(104, 20)
         Me.d1.TabIndex = 15
