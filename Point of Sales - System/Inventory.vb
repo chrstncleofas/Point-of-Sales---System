@@ -1,6 +1,5 @@
 ﻿Imports Guna.UI2.WinForms.Suite
 Imports Npgsql
-
 Public Class Inventory
     Sub txtclear()
         txtProductID.Text = ""
@@ -34,7 +33,7 @@ Public Class Inventory
             txtBuyingPrice.Text = dbds.Tables("tblstock").Rows(recpointer).Item("Buying Price")
             txtSellingPrice.Text = dbds.Tables("tblstock").Rows(recpointer).Item("Selling Price")
         Catch ex As Exception
-            MsgBox("Error", vbCritical, "Warning!!1!")
+            MsgBox(ex.Message, vbCritical, "Error")
         End Try
     End Sub
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -83,7 +82,7 @@ Public Class Inventory
                     idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
                     idPict.Load()
                 Catch err As Exception
-                    MsgBox(err.Message)
+                    MsgBox(err.Message, vbCritical, "Error")
                 End Try
             End If
         Else
@@ -95,14 +94,63 @@ Public Class Inventory
         recpointer = 0
         dgStock.Rows(recpointer).Selected = True
         display()
-        'Criticals()
+        Criticals()
         Try
             idPict.ImageLocation = ""
             idPict.Refresh()
             idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
             idPict.Load()
         Catch ex As Exception
-            MsgBox("Error", vbCritical, "Warning!!1!")
+            MsgBox(ex.Message, vbCritical, "Error")
         End Try
+    End Sub
+    Private Sub btnLast_Click(sender As Object, e As EventArgs) Handles btnLast.Click
+        dgStock.Rows(recpointer).Selected = False
+        recpointer = trec
+        dgStock.Rows(recpointer).Selected = True
+        display()
+        Criticals()
+        Try
+            idPict.ImageLocation = ""
+            idPict.Refresh()
+            idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
+            idPict.Load()
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        If recpointer < trec Then
+            dgStock.Rows(recpointer).Selected = False
+            recpointer = recpointer + 1
+            dgStock.Rows(recpointer).Selected = True
+            display()
+            Criticals()
+            Try
+                idPict.ImageLocation = ""
+                idPict.Refresh()
+                idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
+                idPict.Load()
+            Catch ex As Exception
+                MsgBox(ex.Message, vbCritical, "Error")
+            End Try
+        End If
+    End Sub
+    Private Sub btnPrev_Click(sender As Object, e As EventArgs) Handles btnPrev.Click
+        If recpointer > 0 Then
+            dgStock.Rows(recpointer).Selected = False
+            recpointer = recpointer - 1
+            dgStock.Rows(recpointer).Selected = True
+            display()
+            Criticals()
+            Try
+                idPict.ImageLocation = ""
+                idPict.Refresh()
+                idPict.ImageLocation = Application.StartupPath & "\products\" & txtProductID.Text.Trim & ".jpg"
+                idPict.Load()
+            Catch ex As Exception
+                MsgBox(ex.Message, vbCritical, "Error")
+            End Try
+        End If
     End Sub
 End Class
