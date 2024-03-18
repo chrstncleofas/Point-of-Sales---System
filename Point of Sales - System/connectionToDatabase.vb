@@ -95,4 +95,99 @@ Module connectionToDatabase
             CloseDatabase()
         End Try
     End Sub
+    Sub opendb3()
+        Try
+            OpenDatabase()
+            tbltemp = New NpgsqlDataAdapter("SELECT * FROM tbltemp", conn)
+            dbds = New DataSet()
+            tbltemp.Fill(dbds, "tbltemp")
+
+            If dbds.Tables("tbltemp").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tbltemp").Rows.Count) - 1
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
+    Sub sqlquery3()
+        Try
+            tbltemp = New NpgsqlDataAdapter("SELECT ""Stock No"", ""Item Name"", ""Description"", ""Quantity"", ""Unit Price"", ""Total"" FROM tbltemp", conn)
+            dbds = New DataSet()
+            tbltemp.Fill(dbds, "tbltemp")
+            If dbds.Tables("tbltemp").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tbltemp").Rows.Count) - 1
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
+    Sub opendb4()
+        Try
+            OpenDatabase()
+            tbltran = New NpgsqlDataAdapter("SELECT * FROM tbltran", conn)
+            dbds = New DataSet()
+            tbltran.Fill(dbds, "tbltran")
+
+            If dbds.Tables("tbltran").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tbltran").Rows.Count) - 1
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
+    Sub sqlquery4()
+        Try
+            tbltran = New NpgsqlDataAdapter("SELECT * FROM tbltran", conn)
+            dbds = New DataSet()
+            tbltran.Fill(dbds, "tbltran")
+            If dbds.Tables("tbltran").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tbltran").Rows.Count) - 1
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
+    Sub opendb5()
+        Try
+            OpenDatabase()
+            tblinvoice = New NpgsqlDataAdapter("SELECT * FROM tblinvoice", conn)
+            dbds = New DataSet()
+            tblinvoice.Fill(dbds, "tblinvoice")
+            If dbds.Tables("tblinvoice").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tblinvoice").Rows.Count) - 1
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
+    Sub sqlquery5()
+        Try
+            tblinvoice = New NpgsqlDataAdapter("SELECT * FROM tblinvoice", conn)
+            dbds = New DataSet()
+            tblinvoice.Fill(dbds, "tblinvoice")
+            If dbds.Tables("tblinvoice").Rows.Count > 0 Then
+                recpointer = 0
+                trec = CInt(dbds.Tables("tblinvoice").Rows.Count) - 1
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
 End Module
