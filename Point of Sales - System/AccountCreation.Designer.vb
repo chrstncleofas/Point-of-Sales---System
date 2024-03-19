@@ -60,6 +60,7 @@ Partial Class AccountCreation
         'txtid
         '
         Me.txtid.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtid.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.txtid.Location = New System.Drawing.Point(291, 74)
         Me.txtid.Name = "txtid"
         Me.txtid.ReadOnly = True
@@ -89,6 +90,7 @@ Partial Class AccountCreation
         'cbopv
         '
         Me.cbopv.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbopv.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.cbopv.FormattingEnabled = True
         Me.cbopv.Items.AddRange(New Object() {"Admin", "User"})
         Me.cbopv.Location = New System.Drawing.Point(494, 74)
@@ -109,6 +111,7 @@ Partial Class AccountCreation
         'txtun
         '
         Me.txtun.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtun.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.txtun.Location = New System.Drawing.Point(291, 156)
         Me.txtun.Name = "txtun"
         Me.txtun.Size = New System.Drawing.Size(159, 35)
@@ -117,6 +120,7 @@ Partial Class AccountCreation
         'txtpw
         '
         Me.txtpw.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpw.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.txtpw.Location = New System.Drawing.Point(494, 159)
         Me.txtpw.Name = "txtpw"
         Me.txtpw.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
@@ -136,6 +140,7 @@ Partial Class AccountCreation
         'txtpost
         '
         Me.txtpost.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpost.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.txtpost.FormattingEnabled = True
         Me.txtpost.Items.AddRange(New Object() {"System Admin", "IT Manager", "Cashier", "Clerk", "Sales Agent", "Supervisor"})
         Me.txtpost.Location = New System.Drawing.Point(699, 71)
@@ -166,6 +171,7 @@ Partial Class AccountCreation
         'txtrpw
         '
         Me.txtrpw.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtrpw.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.txtrpw.Location = New System.Drawing.Point(699, 156)
         Me.txtrpw.Name = "txtrpw"
         Me.txtrpw.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
@@ -200,7 +206,7 @@ Partial Class AccountCreation
         '
         'd1
         '
-        Me.d1.Location = New System.Drawing.Point(467, 263)
+        Me.d1.Location = New System.Drawing.Point(430, 263)
         Me.d1.Name = "d1"
         Me.d1.Size = New System.Drawing.Size(104, 20)
         Me.d1.TabIndex = 15
@@ -282,7 +288,7 @@ Partial Class AccountCreation
         Me.dgList.Location = New System.Drawing.Point(253, 290)
         Me.dgList.Name = "dgList"
         Me.dgList.ReadOnly = True
-        Me.dgList.Size = New System.Drawing.Size(642, 199)
+        Me.dgList.Size = New System.Drawing.Size(632, 199)
         Me.dgList.TabIndex = 17
         '
         'OpenFileDialog1
@@ -291,7 +297,7 @@ Partial Class AccountCreation
         '
         'btnFirst
         '
-        Me.btnFirst.Location = New System.Drawing.Point(577, 260)
+        Me.btnFirst.Location = New System.Drawing.Point(540, 260)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(75, 23)
         Me.btnFirst.TabIndex = 18
@@ -300,7 +306,7 @@ Partial Class AccountCreation
         '
         'btnLast
         '
-        Me.btnLast.Location = New System.Drawing.Point(658, 261)
+        Me.btnLast.Location = New System.Drawing.Point(621, 261)
         Me.btnLast.Name = "btnLast"
         Me.btnLast.Size = New System.Drawing.Size(75, 23)
         Me.btnLast.TabIndex = 19
@@ -309,7 +315,7 @@ Partial Class AccountCreation
         '
         'btnPrev
         '
-        Me.btnPrev.Location = New System.Drawing.Point(820, 261)
+        Me.btnPrev.Location = New System.Drawing.Point(783, 261)
         Me.btnPrev.Name = "btnPrev"
         Me.btnPrev.Size = New System.Drawing.Size(75, 23)
         Me.btnPrev.TabIndex = 21
@@ -318,7 +324,7 @@ Partial Class AccountCreation
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(739, 260)
+        Me.btnNext.Location = New System.Drawing.Point(702, 260)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(75, 23)
         Me.btnNext.TabIndex = 20
@@ -327,7 +333,7 @@ Partial Class AccountCreation
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(739, 232)
+        Me.btnEdit.Location = New System.Drawing.Point(702, 232)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(75, 23)
         Me.btnEdit.TabIndex = 22
@@ -336,7 +342,7 @@ Partial Class AccountCreation
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(820, 232)
+        Me.btnDelete.Location = New System.Drawing.Point(783, 232)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 23)
         Me.btnDelete.TabIndex = 23
@@ -345,7 +351,7 @@ Partial Class AccountCreation
         '
         'btnEnable
         '
-        Me.btnEnable.Location = New System.Drawing.Point(658, 232)
+        Me.btnEnable.Location = New System.Drawing.Point(621, 232)
         Me.btnEnable.Name = "btnEnable"
         Me.btnEnable.Size = New System.Drawing.Size(75, 23)
         Me.btnEnable.TabIndex = 24
@@ -357,7 +363,7 @@ Partial Class AccountCreation
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(895, 489)
+        Me.ClientSize = New System.Drawing.Size(885, 489)
         Me.Controls.Add(Me.btnEnable)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)

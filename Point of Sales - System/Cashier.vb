@@ -196,7 +196,6 @@ Public Class Cashier
         If e.KeyCode = Keys.Enter Then
             dgtemp.DataSource = dbds.Tables("tbltemp")
             cmbPayment.Enabled = True
-            unlock()
             If txtQ.Text = "" Then
                 MsgBox("Kindly enter the no. of quantity for this Item(s)!, Thank you...", vbCritical, "oops")
                 txtQ.Focus()
@@ -254,6 +253,15 @@ Public Class Cashier
         Catch err As Exception
             'MsgBox(err.ToString)
         End Try
+    End Sub
+    Private Sub cmbPayment_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPayment.SelectedIndexChanged
+        If cmbPayment.Text = "Cash" Then
+            txtamt.Enabled = True
+            txtDiscount.Enabled = True
+        ElseIf cmbPayment.Text = "Debit / Credit Card" Then
+            txtamt.Enabled = True
+            txtDiscount.Enabled = True
+        End If
     End Sub
     Private Sub txtamt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtamt.KeyDown
         xDesc = txtDesc.Text
@@ -404,6 +412,7 @@ Public Class Cashier
                 Me.Close()
             Else
                 LoginForm.Show()
+                MainForm.Close()
                 Me.Close()
             End If
         End If
