@@ -25,6 +25,7 @@ Partial Class MainForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnLogout = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.grpCashier = New System.Windows.Forms.GroupBox()
         Me.picCashier = New System.Windows.Forms.PictureBox()
@@ -40,7 +41,6 @@ Partial Class MainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblLoginAs = New System.Windows.Forms.Label()
         Me.dtTime = New System.Windows.Forms.DateTimePicker()
-        Me.btnLogout = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.grpCashier.SuspendLayout()
@@ -82,6 +82,19 @@ Partial Class MainForm
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(800, 41)
         Me.Panel2.TabIndex = 2
+        '
+        'btnLogout
+        '
+        Me.btnLogout.FlatAppearance.BorderSize = 0
+        Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogout.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogout.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnLogout.Location = New System.Drawing.Point(710, 9)
+        Me.btnLogout.Name = "btnLogout"
+        Me.btnLogout.Size = New System.Drawing.Size(80, 23)
+        Me.btnLogout.TabIndex = 0
+        Me.btnLogout.Text = "Logout"
+        Me.btnLogout.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -239,19 +252,6 @@ Partial Class MainForm
         Me.dtTime.Name = "dtTime"
         Me.dtTime.Size = New System.Drawing.Size(200, 20)
         Me.dtTime.TabIndex = 10
-        '
-        'btnLogout
-        '
-        Me.btnLogout.FlatAppearance.BorderSize = 0
-        Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogout.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogout.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnLogout.Location = New System.Drawing.Point(710, 9)
-        Me.btnLogout.Name = "btnLogout"
-        Me.btnLogout.Size = New System.Drawing.Size(80, 23)
-        Me.btnLogout.TabIndex = 0
-        Me.btnLogout.Text = "Logout"
-        Me.btnLogout.UseVisualStyleBackColor = True
         '
         'MainForm
         '

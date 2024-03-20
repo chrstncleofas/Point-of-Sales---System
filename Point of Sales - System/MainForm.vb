@@ -38,4 +38,8 @@
             Me.Close()
         End If
     End Sub
+    Private Sub picUsers_Click(sender As Object, e As EventArgs) Handles picUsers.Click
+        UsersLogs.Show()
+        Me.Hide()
+    End Sub
 End Class

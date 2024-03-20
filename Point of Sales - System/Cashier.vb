@@ -1,4 +1,5 @@
-﻿Imports System.Drawing.Printing
+﻿Imports System.ComponentModel.Design
+Imports System.Drawing.Printing
 Imports Npgsql
 Public Class Cashier
     Dim WithEvents PD As New PrintDocument
@@ -194,62 +195,68 @@ Public Class Cashier
     End Sub
     Private Sub txtQ_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtQ.KeyDown
         If e.KeyCode = Keys.Enter Then
-            dgtemp.DataSource = dbds.Tables("tbltemp")
+            dgtemp.DataSource = Nothing ' Clear the data source first before populating it again
             cmbPayment.Enabled = True
             If txtQ.Text = "" Then
-                MsgBox("Kindly enter the no. of quantity for this Item(s)!, Thank you...", vbCritical, "oops")
+                MsgBox("Kindly enter the quantity for this item!", vbCritical, "Error")
                 txtQ.Focus()
                 Exit Sub
             End If
-            If e.KeyCode = Keys.Enter Then
-                xGTotal = CInt(xGTotal) + CDbl(lblTotal.Text)
-                lblDisplay.Text = Format(xGTotal, "Standard")
+            ' Update total quantity display
+            xGTotal += CDbl(lblTotal.Text)
+            lblDisplay.Text = FormatCurrency(xGTotal)
+            Try
                 OpenDatabase()
                 If sw = True Then
+                    ' Insert new item into tbltemp
                     dbcmd = New NpgsqlCommand("INSERT INTO tbltemp(""Stock No"", ""Item Name"", ""Description"", ""Quantity"", ""Unit Price"", ""Total"", ""VAT"") VALUES ('" & txtSN.Text.Trim & "','" & lblPName.Text.Trim & "','" & txtDesc.Text.Trim & "','" & txtQ.Text.Trim & "','" & xUP & "','" & lblTotal.Text.Trim & "', '" & lblVAT.Text.Trim & "')", conn)
                     dbcmd.ExecuteNonQuery()
                 Else
-                    xtempq = xtempq + CInt(txtQ.Text)
-                    xGTotal = CSng(xGTotal) + CSng(lblTotal.Text)
+                    ' Update quantity and total price of existing item in tbltemp
+                    xtempq += CInt(txtQ.Text)
+                    xGTotal += CSng(lblTotal.Text)
                     lblDisplay.Text = FormatCurrency(lblDisplay.Text)
-                    dbcmd = New NpgsqlCommand("UPDATE tbltemp set ""Quantity""='" & xtempq & "', ""Total""='" & lblDisplay.Text & "' WHERE ""Stock No"" like '" & txtSN.Text & "'", conn)
+                    dbcmd = New NpgsqlCommand("UPDATE tbltemp SET ""Quantity"" = '" & xtempq & "', ""Total"" = '" & lblDisplay.Text & "' WHERE ""Stock No"" LIKE '" & txtSN.Text & "'", conn)
                     dbcmd.ExecuteNonQuery()
                 End If
+                ' Refresh the data in the DataGridView
                 sqlquery3()
                 dgtemp.DataSource = dbds.Tables("tbltemp")
-                txtQ.Clear()
-                txtSN.Clear()
-
-                'Total funtion by Quantity
-                tbltemp = New NpgsqlDataAdapter("SELECT sum(CAST(""Total"" AS numeric)) + sum(CAST(""VAT"" AS numeric)) as xt FROM tbltemp", conn)
-                dbds = New DataSet()
-                tbltemp.Fill(dbds, "tbltemp")
-                If dbds.Tables("tbltemp").Rows.Count > 0 Then
-                    recpointer = 0
-                    trec = CInt(dbds.Tables("tbltemp").Rows.Count) - 1
-                End If
-                lblDisplay.Text = dbds.Tables("tbltemp").Rows(0).Item("xt")
-                lblDisplay.Text = FormatCurrency(lblDisplay.Text)
-
-                'Computation of Vat by Quantity
-                tbltemp = New NpgsqlDataAdapter("SELECT sum(CAST(""VAT"" AS numeric)) as v FROM tbltemp", conn)
-                dbds = New DataSet()
-                tbltemp.Fill(dbds, "tbltemp")
-                If dbds.Tables("tbltemp").Rows.Count > 0 Then
-                    recpointer = 0
-                    trec = CInt(dbds.Tables("tbltemp").Rows.Count) - 1
-                End If
-                vat = dbds.Tables("tbltemp").Rows(0).Item("v")
+                txtQ.Text = ""
+                txtSN.Text = ""
                 txtSN.Focus()
-            End If
+                ' Compute the total amount and VAT
+                Dim queryTotal As String = "SELECT SUM(CAST(REPLACE(""Total"", '₱', '') AS numeric)) + SUM(CAST(REPLACE(""VAT"", '₱', '') AS numeric)) AS xt FROM tbltemp"
+                Dim queryVAT As String = "SELECT SUM(CAST(""VAT"" AS numeric)) AS v FROM tbltemp"
+                ' Total function by Quantity
+                tbltemp = New NpgsqlDataAdapter(queryTotal, conn)
+                dbds = New DataSet()
+                tbltemp.Fill(dbds, "tbltemp")
+                If dbds.Tables("tbltemp").Rows.Count > 0 Then
+                    lblDisplay.Text = FormatCurrency(dbds.Tables("tbltemp").Rows(0).Item("xt"))
+                End If
+                ' Computation of VAT by Quantity
+                tbltemp = New NpgsqlDataAdapter(queryVAT, conn)
+                dbds = New DataSet()
+                tbltemp.Fill(dbds, "tbltemp")
+                If dbds.Tables("tbltemp").Rows.Count > 0 Then
+                    vat = dbds.Tables("tbltemp").Rows(0).Item("v")
+                End If
+                txtQ.Text = ""
+                txtSN.Text = ""
+                txtSN.Focus()
+            Catch ex As Exception
+                'MsgBox(ex.Message, vbCritical, "Error")
+            Finally
+                CloseDatabase()
+            End Try
         End If
     End Sub
     Private Sub txtQ_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtQ.TextChanged
         Try
-            lblTotal.Text = CInt(txtQ.Text) * CInt(xUP)
-            lblVAT.Text = CInt(txtQ.Text) * 1.3
-            'lblTotal.Text = FormatCurrency(lblTotal.Text)
-            lblTotal.Text = CDec(lblTotal.Text)
+            lblTotal.Text = CDbl(txtQ.Text) * CDbl(xUP)
+            lblVAT.Text = CDbl(txtQ.Text) * 1.3
+            lblTotal.Text = FormatCurrency(lblTotal.Text)
         Catch err As Exception
             'MsgBox(err.ToString)
         End Try
