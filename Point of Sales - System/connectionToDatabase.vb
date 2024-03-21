@@ -1,7 +1,6 @@
 ﻿Imports Npgsql
 Module connectionToDatabase
     Private connString As String = "Host=localhost;Port=5432;Username=postgres;Password=password;Database=myDatabase"
-
     Public conn As NpgsqlConnection
     Public tbluser As NpgsqlDataAdapter
     Public tblstock As NpgsqlDataAdapter

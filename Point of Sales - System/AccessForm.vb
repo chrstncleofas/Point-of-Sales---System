@@ -30,8 +30,8 @@ Public Class AccessForm
                             MsgBox("Welcome to Point of Sales " & xpriv, vbInformation, "Point of Sales Login Page")
                             TextBoxesCleared()
                             AccountCreation.Show()
-                            Me.Hide()
                             LoginForm.Hide()
+                            Me.Hide()
                         Else
                             MsgBox("You do not have admin privileges. Please log in as an admin.", vbCritical, "Error")
                             TextBoxesCleared()
@@ -52,7 +52,7 @@ Public Class AccessForm
         End Try
     End Sub
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        If MsgBox("Are you sure do want to close this window?", vbQuestion + vbYesNo, "Closing Form......") = vbYes Then
+        If MsgBox("Are you sure do want to close this window?", vbQuestion + vbYesNo, "Access Form") = vbYes Then
             Dim counter As Integer
             For counter = 90 To 10 Step -20
                 Me.Opacity = counter / 100

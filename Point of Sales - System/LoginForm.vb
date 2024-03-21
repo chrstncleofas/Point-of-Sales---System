@@ -41,10 +41,10 @@ Public Class LoginForm
         End Try
     End Sub
     Private Sub linkLabelCreate_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabelCreate.LinkClicked
-        AccessForm.Show()
+        AccessForm.ShowDialog()
     End Sub
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        If MsgBox("Are you sure do want to close this window?", vbQuestion + vbYesNo, "Closing Form......") = vbYes Then
+        If MsgBox("Are you sure do want to close this window?", vbQuestion + vbYesNo, "Login Form") = vbYes Then
             Dim counter As Integer
             For counter = 90 To 10 Step -20
                 Me.Opacity = counter / 100
