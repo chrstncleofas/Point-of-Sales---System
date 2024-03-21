@@ -270,6 +270,11 @@ Public Class Cashier
             txtDiscount.Enabled = True
         End If
     End Sub
+    Private Sub txtDiscount_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDiscount.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            lblDisplay.Text = lblDisplay.Text - txtDiscount.Text
+        End If
+    End Sub
     Private Sub txtamt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtamt.KeyDown
         xDesc = txtDesc.Text
         xsn = txtSN.Text
@@ -423,5 +428,53 @@ Public Class Cashier
                 Me.Close()
             End If
         End If
+    End Sub
+    Private Sub ClearFormToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearFormToolStripMenuItem.Click
+        Try
+            lock()
+            txtSN.Focus()
+            clearing()
+            '
+            opendb3()
+            sqlquery3()
+            '
+            OpenDatabase()
+            dbcmd = New NpgsqlCommand("DELETE FROM tbltemp", conn)
+            dbcmd.ExecuteNonQuery()
+            dgtemp.DataSource = dbds.Tables("tbltemp")
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            CloseDatabase()
+        End Try
+    End Sub
+    Private Sub RefreshPageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RefreshPageToolStripMenuItem.Click
+        Try
+            autotransid()
+            invoiceid()
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+        inn = lblInvoice.Text
+        If MsgBox("Successfully save sales invoice", vbInformation, "Sales Invoice") Then
+            Try
+                OpenDatabase()
+                dbcmd = New NpgsqlCommand("INSERT INTO tblinvoice(""Invoice ID"", ""Cash"", ""TAmount"", ""Change"", ""Date"") VALUES ('" & inn & "', '" & txtamt.Text & "', '" & lblDisplay.Text.Trim & "','" & lblchange.Text.Trim & "','" & d1.Value.Date & "')", conn)
+                dbcmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.Message, vbCritical, "Error")
+            Finally
+                CloseDatabase()
+            End Try
+        End If
+    End Sub
+    Private Sub PrintReceiptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintReceiptToolStripMenuItem.Click
+        PrintDocument1.PrinterSettings.PrinterName = My.Settings.printer
+        PrintDocument1.Print()
+    End Sub
+    Private Sub PrintSetupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintSetupToolStripMenuItem.Click
+        FormPrinter.ShowDialog()
     End Sub
 End Class

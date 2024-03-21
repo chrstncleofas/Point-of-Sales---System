@@ -16,7 +16,7 @@ Public Class LoginForm
                 trec = dbds.Tables("tbluser").Rows.Count
                 If trec > 0 Then
                     xname = txtUsername.Text
-                    'Cashier.txtCashier.Text = txtUsername.Text
+                    Cashier.txtCashier.Text = txtUsername.Text
                     xpost = dbds.Tables("tbluser").Rows(0).Item("Position")
                     xpriv = dbds.Tables("tbluser").Rows(0).Item("Privileges")
                     xname = dbds.Tables("tbluser").Rows(0).Item("User Name")

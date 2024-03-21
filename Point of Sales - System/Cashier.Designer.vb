@@ -32,6 +32,11 @@ Partial Class Cashier
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RefreshPageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NavigationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintPreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.txtQ = New System.Windows.Forms.TextBox()
         Me.txtSN = New System.Windows.Forms.TextBox()
@@ -82,8 +87,8 @@ Partial Class Cashier
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
-        Me.NavigationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrintPreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -108,7 +113,7 @@ Partial Class Cashier
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogoutToolStripMenuItem, Me.ClearFormToolStripMenuItem, Me.SaveToolStripMenuItem, Me.RefreshPageToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -117,8 +122,43 @@ Partial Class Cashier
         '
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
         Me.LogoutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.LogoutToolStripMenuItem.Text = "Logout"
+        '
+        'ClearFormToolStripMenuItem
+        '
+        Me.ClearFormToolStripMenuItem.Name = "ClearFormToolStripMenuItem"
+        Me.ClearFormToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
+        Me.ClearFormToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.ClearFormToolStripMenuItem.Text = "Clear Form"
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.SaveToolStripMenuItem.Text = "Save"
+        '
+        'RefreshPageToolStripMenuItem
+        '
+        Me.RefreshPageToolStripMenuItem.Name = "RefreshPageToolStripMenuItem"
+        Me.RefreshPageToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.RefreshPageToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.RefreshPageToolStripMenuItem.Text = "Refresh Page"
+        '
+        'NavigationToolStripMenuItem
+        '
+        Me.NavigationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintPreviewToolStripMenuItem, Me.PrintReceiptToolStripMenuItem, Me.PrintSetupToolStripMenuItem})
+        Me.NavigationToolStripMenuItem.Name = "NavigationToolStripMenuItem"
+        Me.NavigationToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
+        Me.NavigationToolStripMenuItem.Text = "Navigation"
+        '
+        'PrintPreviewToolStripMenuItem
+        '
+        Me.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem"
+        Me.PrintPreviewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.PrintPreviewToolStripMenuItem.Text = "Print Preview"
         '
         'GroupBox4
         '
@@ -689,19 +729,19 @@ Partial Class Cashier
         Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         Me.PrintPreviewDialog1.Visible = False
         '
-        'NavigationToolStripMenuItem
+        'PrintReceiptToolStripMenuItem
         '
-        Me.NavigationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintPreviewToolStripMenuItem})
-        Me.NavigationToolStripMenuItem.Name = "NavigationToolStripMenuItem"
-        Me.NavigationToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
-        Me.NavigationToolStripMenuItem.Text = "Navigation"
+        Me.PrintReceiptToolStripMenuItem.Name = "PrintReceiptToolStripMenuItem"
+        Me.PrintReceiptToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.PrintReceiptToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.PrintReceiptToolStripMenuItem.Text = "Print Receipt"
         '
-        'PrintPreviewToolStripMenuItem
+        'PrintSetupToolStripMenuItem
         '
-        Me.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem"
-        Me.PrintPreviewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PrintPreviewToolStripMenuItem.Text = "Print Preview"
+        Me.PrintSetupToolStripMenuItem.Name = "PrintSetupToolStripMenuItem"
+        Me.PrintSetupToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.PrintSetupToolStripMenuItem.Text = "Print Setup"
         '
         'Cashier
         '
@@ -802,4 +842,9 @@ Partial Class Cashier
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents NavigationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PrintPreviewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClearFormToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RefreshPageToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrintReceiptToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrintSetupToolStripMenuItem As ToolStripMenuItem
 End Class
