@@ -49,10 +49,10 @@ Partial Class SalesReport
         Me.dgSales.AllowUserToDeleteRows = False
         Me.dgSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgSales.Location = New System.Drawing.Point(0, 151)
+        Me.dgSales.Location = New System.Drawing.Point(12, 136)
         Me.dgSales.Name = "dgSales"
         Me.dgSales.ReadOnly = True
-        Me.dgSales.Size = New System.Drawing.Size(907, 284)
+        Me.dgSales.Size = New System.Drawing.Size(885, 294)
         Me.dgSales.TabIndex = 1
         '
         'Label18
@@ -60,11 +60,11 @@ Partial Class SalesReport
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(359, 13)
+        Me.Label18.Location = New System.Drawing.Point(319, 13)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(188, 40)
+        Me.Label18.Size = New System.Drawing.Size(278, 40)
         Me.Label18.TabIndex = 84
-        Me.Label18.Text = "Sales Report"
+        Me.Label18.Text = "Transaction Report"
         '
         'Panel1
         '
@@ -73,7 +73,7 @@ Partial Class SalesReport
         Me.Panel1.Controls.Add(Me.btnWeek)
         Me.Panel1.Controls.Add(Me.btnYesterday)
         Me.Panel1.Controls.Add(Me.btnToday)
-        Me.Panel1.Location = New System.Drawing.Point(197, 99)
+        Me.Panel1.Location = New System.Drawing.Point(195, 81)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(327, 46)
         Me.Panel1.TabIndex = 85
@@ -130,7 +130,8 @@ Partial Class SalesReport
         '
         Me.d1.CalendarFont = New System.Drawing.Font("Segoe UI Semibold", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.d1.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.d1.Location = New System.Drawing.Point(530, 104)
+        Me.d1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.d1.Location = New System.Drawing.Point(528, 87)
         Me.d1.Name = "d1"
         Me.d1.Size = New System.Drawing.Size(165, 35)
         Me.d1.TabIndex = 86
@@ -139,18 +140,18 @@ Partial Class SalesReport
         '
         Me.d2.CalendarFont = New System.Drawing.Font("Segoe UI Semibold", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.d2.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.d2.Location = New System.Drawing.Point(701, 104)
+        Me.d2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.d2.Location = New System.Drawing.Point(699, 87)
         Me.d2.Name = "d2"
         Me.d2.Size = New System.Drawing.Size(165, 35)
         Me.d2.TabIndex = 87
         '
         'btnExcel
         '
-        Me.btnExcel.FlatAppearance.BorderSize = 0
         Me.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExcel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExcel.ForeColor = System.Drawing.Color.White
-        Me.btnExcel.Location = New System.Drawing.Point(56, 99)
+        Me.btnExcel.Location = New System.Drawing.Point(54, 81)
         Me.btnExcel.Name = "btnExcel"
         Me.btnExcel.Size = New System.Drawing.Size(138, 46)
         Me.btnExcel.TabIndex = 90
@@ -176,7 +177,7 @@ Partial Class SalesReport
         Me.lblTotalSales.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblTotalSales.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotalSales.ForeColor = System.Drawing.Color.White
-        Me.lblTotalSales.Location = New System.Drawing.Point(767, 12)
+        Me.lblTotalSales.Location = New System.Drawing.Point(767, 10)
         Me.lblTotalSales.Name = "lblTotalSales"
         Me.lblTotalSales.Size = New System.Drawing.Size(128, 35)
         Me.lblTotalSales.TabIndex = 3
@@ -187,7 +188,7 @@ Partial Class SalesReport
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(683, 21)
+        Me.Label5.Location = New System.Drawing.Point(683, 19)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 17)
         Me.Label5.TabIndex = 2

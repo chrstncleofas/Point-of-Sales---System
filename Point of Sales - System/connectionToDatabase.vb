@@ -64,7 +64,7 @@ Module connectionToDatabase
     Public Sub opendb2()
         Try
             OpenDatabase()
-            tblstock = New NpgsqlDataAdapter("SELECT * FROM tblstock", conn)
+            tblstock = New NpgsqlDataAdapter("SELECT * FROM tblstock ORDER BY ""Product ID"" ASC", conn)
             dbds = New DataSet()
             tblstock.Fill(dbds, "tblstock")
             If dbds.Tables("tblstock").Rows.Count > 0 Then
@@ -80,7 +80,7 @@ Module connectionToDatabase
     Public Sub sqlquery2()
         Try
             OpenDatabase()
-            tblstock = New NpgsqlDataAdapter("SELECT * FROM tblstock", conn)
+            tblstock = New NpgsqlDataAdapter("SELECT * FROM tblstock ORDER BY ""Product ID"" ASC", conn)
             dbds = New DataSet()
             tblstock.Fill(dbds, "tblstock")
 

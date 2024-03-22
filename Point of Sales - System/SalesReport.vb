@@ -1,5 +1,5 @@
-﻿Imports System.ComponentModel.Design
-Imports Npgsql
+﻿Imports Npgsql
+Imports System.ComponentModel.Design
 Imports Excel = Microsoft.Office.Interop.Excel
 Public Class SalesReport
     Private Sub ShowSales(query As String)
@@ -43,8 +43,10 @@ Public Class SalesReport
         End Try
     End Sub
     Private Sub SalesReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Formatter
         d1.Format = DateTimePickerFormat.Custom
         d1.CustomFormat = "yyyy-MM-dd"
+        ' Formatter
         d2.Format = DateTimePickerFormat.Custom
         d2.CustomFormat = "yyyy-MM-dd"
     End Sub
@@ -93,21 +95,46 @@ Public Class SalesReport
             For col = 0 To dgSales.Columns.Count - 1
                 rawData(0, col) = dgSales.Columns(col).HeaderText.ToUpper
             Next
+            ' Set column width after creating the worksheet
+            sheetIndex += 1
+            Ws = Wb.Worksheets(sheetIndex)
+            For col = 0 To dgSales.Columns.Count - 1
+                Ws.Columns(col + 1).ColumnWidth = 15.71
+            Next
+
             For col = 0 To dgSales.Columns.Count - 1
                 For row = 0 To dgSales.Rows.Count - 1
                     rawData(row + 1, col) = dgSales.Rows(row).Cells(col).Value
                 Next
             Next
+            ' Insert new row for Total Sales
+            For col = 0 To dgSales.Columns.Count - 1
+                rawData(dgSales.Rows.Count, col) = ""
+            Next
+            ' Compute total sales
+            Dim salesTotal As Double
+            For i As Integer = 0 To dgSales.RowCount - 1
+                salesTotal += dgSales.Rows(i).Cells(6).Value.ToString
+            Next
+            ' Insert total sales row
+            rawData(dgSales.Rows.Count, 8) = "Total Sales:"
+            rawData(dgSales.Rows.Count, 9) = FormatCurrency(salesTotal)
+            '
             Dim finalColLetter As String = String.Empty
             finalColLetter = ExcelColName(dgSales.Columns.Count)
-            sheetIndex += 1
-            Ws = Wb.Worksheets(sheetIndex)
+
+            ' Set the range and assign the data
             Dim excelRange As String = String.Format("A1:{0}{1}", finalColLetter, dgSales.Rows.Count + 1)
             Ws.Range(excelRange, Type.Missing).Value2 = rawData
-            Ws = Nothing
+
+            ' Center align all cells
+            Dim range As Excel.Range = Ws.Range(excelRange)
+            range.HorizontalAlignment = Excel.Constants.xlCenter
+
+            ' Save and close Excel
             Wb.SaveAs(SaveFileDialog1.FileName, Type.Missing, Type.Missing,
-         Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-         Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing)
+     Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing)
             Wb.Close(True, Type.Missing, Type.Missing)
             Wb = Nothing
             ' Release the Application object

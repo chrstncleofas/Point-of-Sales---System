@@ -1,5 +1,5 @@
-﻿Imports System.IO
-Imports Npgsql
+﻿Imports Npgsql
+Imports System.IO
 Public Class Inventory
     Sub txtclear()
         txtProductID.Text = ""
